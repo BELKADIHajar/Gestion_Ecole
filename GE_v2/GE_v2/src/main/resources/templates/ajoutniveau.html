@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+
+    <!-- Favicon -->
+    <link th:href="@{/img/favicon.ico}" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link th:href="@{https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap}" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css}" rel="stylesheet">
+    <link th:href="@{https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css}" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link th:href="@{/lib/animate/animate.min.css}" rel="stylesheet">
+    <link th:href="@{/lib/owlcarousel/assets/owl.carousel.min.css}" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+    <title>Stackfindover: Sign in</title>
+    <link rel="stylesheet" th:href="@{/css/ajoutmatiere.css}" />
+</head>
+
+<body>
+<!-- Navbar Start -->
+<nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
+    <a th:href="@{/}" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+        <h2 class="m-0 text-primary"><i class="fa fa-book me-3"></i>eLEARNING</h2>
+    </a>
+    <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav ms-auto p-4 p-lg-0">
+            <a th:href="@{/professeurs}" class="nav-item nav-link active">Home</a>
+            <a th:href="@{/about}" class="nav-item nav-link">About</a>
+            <a th:href="@{/professeurs}" class="nav-item nav-link active">Home</a>
+            <a th:href="@{/professeur/add}"  class="nav-item nav-link">Add professor</a>
+            <a th:href="@{/matieres/add}"  class="nav-item nav-link">Add Course</a>
+            <a th:href="@{/sites/add}"  class="nav-item nav-link">Add Site</a>
+            <a th:href="@{/courses}"  class="nav-item nav-link">Courses</a>
+        </div>
+        <a th:href="@{/Sites}" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Sites<i class="fa fa-arrow-right ms-3"></i></a>
+    </div>
+</nav>
+<!-- Navbar End -->
+<div class="login-root">
+    <div class="box-root flex-flex flex-direction--column" style="min-height: 100vh;flex-grow: 1;">
+        <div class="loginbackground box-background--white padding-top--64">
+            <div class="loginbackground-gridContainer">
+                <div class="box-root flex-flex" style="grid-area: top / start / 8 / end;">
+                    <div class="box-root" style="background-image: linear-gradient(white 0%, rgb(247, 250, 252) 33%); flex-grow: 1;">
+                    </div>
+                </div>
+                <div class="box-root flex-flex" style="grid-area: 4 / 2 / auto / 5;">
+                    <div class="box-root box-divider--light-all-2 animationLeftRight tans3s" style="flex-grow: 1;"></div>
+                </div>
+                <div class="box-root flex-flex" style="grid-area: 6 / start / auto / 2;">
+                    <div class="box-root box-background--blue800" style="flex-grow: 1;"></div>
+                </div>
+                <div class="box-root flex-flex" style="grid-area: 7 / start / auto / 4;">
+                    <div class="box-root box-background--blue animationLeftRight" style="flex-grow: 1;"></div>
+                </div>
+                <div class="box-root flex-flex" style="grid-area: 8 / 4 / auto / 6;">
+                    <div class="box-root box-background--gray100 animationLeftRight tans3s" style="flex-grow: 1;"></div>
+                </div>
+                <div class="box-root flex-flex" style="grid-area: 2 / 15 / auto / end;">
+                    <div class="box-root box-background--cyan200 animationRightLeft tans4s" style="flex-grow: 1;"></div>
+                </div>
+                <div class="box-root flex-flex" style="grid-area: 3 / 14 / auto / end;">
+                    <div class="box-root box-background--blue animationRightLeft" style="flex-grow: 1;"></div>
+                </div>
+                <div class="box-root flex-flex" style="grid-area: 4 / 17 / auto / 20;">
+                    <div class="box-root box-background--gray100 animationRightLeft tans4s" style="flex-grow: 1;"></div>
+                </div>
+                <div class="box-root flex-flex" style="grid-area: 5 / 14 / auto / 17;">
+                    <div class="box-root box-divider--light-all-2 animationRightLeft tans3s" style="flex-grow: 1;"></div>
+                </div>
+            </div>
+        </div>
+        <div class="box-root padding-top--24 flex-flex flex-direction--column" style="flex-grow: 1; z-index: 9;">
+            <div class="box-root padding-top--48 padding-bottom--24 flex-flex flex-justifyContent--center">
+                <h1><a href="http://blog.stackfindover.com/" rel="dofollow">Add a level of study</a></h1>
+            </div>
+            <!--Start Form-->
+            <div class="formbg-outer">
+                <div class="formbg">
+                    <div class="formbg-inner padding-horizontal--48">
+                        <form th:action="@{/niveaux/save}" th:object="${niveau}" method="post">
+                            <div class="field padding-bottom--24">
+                                <label class="col-form-label col-sm-4" >Name :</label>
+                                <input type="text" th:field="*{nom}" required>
+                            </div>
+                            <div class="field padding-bottom--24">
+                                <label class="col-form-label col-sm-4" >Site :</label>
+                                <select th:field="*{site}" class="form-control" required>
+                                    <th:block th:each="mat : ${listsites}" >
+                                        <option th:text="${mat.nom}" th:value="${mat.id}" />
+                                    </th:block>
+                                </select>
+                            </div>
+                            <div class="field padding-bottom--24">
+                                <input type="submit" name="submit" value="Add">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+            <!--End Form-->
+        </div>
+    </div>
+</div>
+</body>
+</html>
